@@ -56,7 +56,7 @@ Importing data into CartoDB is easy! All you need is a file in a supported forma
 
 ### Name joins
 
-... for census tracts, the column to join on is `nyc_tract_populations` in `nyc_tract_populations` and `ct2010` in `nyc_tracts2010`
+... for census tracts, the column to join on is `borotract_id` in `nyc_tract_populations` and `boroct2010` in `nyc_tracts2010`
 
 ## Publish maps
 
