@@ -41,7 +41,7 @@ By the end of this workshop you will also have created a map with both Leaflet a
 
 ## Installation
 
-... Add link to md on how to install
+Follow [these guidelines](https://github.com/csvsoundsystem/nicar-cartodb-postgis/blob/gh-pages/SETUP.md#installing-postgis-locally) on how to set up PostgreSQL and PostGIS on your own machine.
 
 ### Filtering, ordering, limiting
 
