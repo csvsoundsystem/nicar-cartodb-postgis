@@ -20,7 +20,7 @@ Source: http://www.nyc.gov/html/dcp/download/census/census2010/t_pl_p1_ct.xlsx
 
 Download date: 2014-02-23
 
-Notes: Renamed columns, removed Excel formatting. Download page http://www.nyc.gov/html/dcp/html/census/demo_tables_2010.shtml
+Notes: Renamed columns, removed Excel formatting, added `borotract_id column`, which is a concatination of `tract_id` and `boro_code`. Download page http://www.nyc.gov/html/dcp/html/census/demo_tables_2010.shtml
 
 ### nyc_census_tract_shapes_2010.zip
 
@@ -38,3 +38,7 @@ Download date: 2014-02-23
 
 Notes: NYC Neighborhood tabulation areas. Download page
 http://www.nyc.gov/html/dcp/html/bytes/dwn_nynta.shtml
+
+### nyc_tracts2010_pop.zip
+
+Notes: A join of `nyc_tracts2010.zip` and `nyc_tract_populations.csv`, joined on `boroct2010` in the former and `borotract_id` in the latter
