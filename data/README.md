@@ -29,3 +29,12 @@ Source: http://www.nyc.gov/html/dcp/download/bytes/nyct2010_13dav.zip
 Download date: 2014-02-23
 
 Notes: Census Tracts 2010 (Clipped to shoreline). Download page http://www.nyc.gov/html/dcp/html/bytes/districts_download_metadata.shtml
+
+### nyc_neighborhood_shapes.zip
+
+Source: http://www.nyc.gov/html/dcp/download/bytes/nynta_13dav.zip
+
+Download date: 2014-02-23
+
+Notes: NYC Neighborhood tabulation areas. Download page
+http://www.nyc.gov/html/dcp/html/bytes/dwn_nynta.shtml

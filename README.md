@@ -62,7 +62,7 @@ As you start expirementing more you'll want to know about the [GIS StackExchange
 
 ## Installation
 
-... Add link to md on how to install
+Follow [these guidelines](https://github.com/csvsoundsystem/nicar-cartodb-postgis/blob/gh-pages/SETUP.md#installing-postgis-locally) on how to set up PostgreSQL and PostGIS on your own machine.
 
 ### Filtering, ordering, limiting
 
