@@ -50,6 +50,8 @@ As you start expirementing more you'll want to know about the [GIS StackExchange
 
 ### Name joins
 
+... for census tracts, the column to join on is `nyc_tract_populations` in `nyc_tract_populations` and `ct2010` in `nyc_tracts2010`
+
 ## Publish maps
 
 ### Infowindows
