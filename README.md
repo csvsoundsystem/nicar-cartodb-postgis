@@ -38,6 +38,10 @@ As you start expirementing more you'll want to know about the [GIS StackExchange
 
 ### Importing data
 
+Importing data into CartoDB is easy! All you need is a file in a supported format (CSV, KML, GeoJSON, and Shapefile are all good ones) either online or on your desktop. You can drag local files right to your browser to import. Remote files you can import by pasting the URL into the import field.
+
+![import](http://csvsoundsystem.github.io/nicar-cartodb-postgis/assets/gifs/import.gif)
+
 #### Datasets
 
 [Poll sites](http://csvsoundsystem.github.io/nicar-cartodb-postgis/data/poll_sites.zip)
