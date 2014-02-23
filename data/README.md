@@ -4,7 +4,7 @@ Source: https://data.cityofnewyork.us/City-Government/Voting-Poll-Sites-AS-OF-09
 
 Download date: 2014-02-23
 
-Notes: valid polling sites as of 09-05-2013
+Notes: valid polling sites as of 2013-09-05
 
 ### nyc_neighborhood_populations.csv
 
