@@ -21,3 +21,11 @@ Source: http://www.nyc.gov/html/dcp/download/census/census2010/t_pl_p1_ct.xlsx
 Download date: 2014-02-23
 
 Notes: Renamed columns, removed Excel formatting. Download page http://www.nyc.gov/html/dcp/html/census/demo_tables_2010.shtml
+
+### nyc_census_tract_shapes_2010.zip
+
+Source: http://www.nyc.gov/html/dcp/download/bytes/nyct2010_13dav.zip
+
+Download date: 2014-02-23
+
+Notes: Census Tracts 2010 (Clipped to shoreline). Download page http://www.nyc.gov/html/dcp/html/bytes/districts_download_metadata.shtml
