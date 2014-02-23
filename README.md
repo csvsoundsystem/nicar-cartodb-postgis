@@ -8,9 +8,9 @@ Data and walkthroughs for NICAR '14 workshop.
 
 # Introduction to CartoDB
 
-### Data sources
-
 ### Importing data
+
+#### Datasets
 
 ### Using the dashboard
 
