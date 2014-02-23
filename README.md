@@ -9,8 +9,8 @@ This workshop is first and foremost and introduction to PostGIS and the power of
 
 ##### Us?
 
-[Michael Keller](https://twitter.com/mhkeller)
-[Andrew Hill](https://twitter.com/andrewxhill)
+* [Michael Keller](https://twitter.com/mhkeller)
+* [Andrew Hill](https://twitter.com/andrewxhill)
 
 ### Bonus
 
@@ -39,6 +39,8 @@ As you start expirementing more you'll want to know about the [GIS StackExchange
 ### Importing data
 
 #### Datasets
+
+[Poll sites](http://csvsoundsystem.github.io/nicar-cartodb-postgis/data/poll_sites.zip)
 
 ### Using the dashboard
 
