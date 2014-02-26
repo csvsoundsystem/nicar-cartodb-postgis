@@ -68,20 +68,128 @@ Importing data into CartoDB is easy! All you need is a file in a supported forma
 
 # PostGIS
 
+PostGIS is an extension for the open-source database PostgreSQL. It's a "spatially-aware" database. For example, let's say you have a spreadsheet with a latitude and a longitude column. To a normal database, those are just numbers. To PostGIS, it knows they are geography, which lets you do things like find all points within a certain radius of a given point, or calculate the distance from these points to other things.
+
 ## Installation
 
 Follow [these guidelines](https://github.com/csvsoundsystem/nicar-cartodb-postgis/blob/gh-pages/SETUP.md#installing-postgis-locally) on how to set up PostgreSQL and PostGIS on your own machine.
 
 ### Filtering, ordering, limiting
 
-### Selecting, counting, summing
+Let's start working with historic Post Offices in Nebraska: `postoffices_ne`.
 
-### Spatial joining
+Click on the `SQL` tab we can start doing some basic querying.
 
-### Mapping distance
+##### Filtering: `WHERE`
 
-... distance to nearest X, find me all within range of X
+SQL can filter using the `WHERE` command.
 
-### Making lines from points
+````
+SELECT * FROM postoffices WHERE year < 1900
+
+SELECT * FROM postoffices WHERE year > 1900 AND year < 1920 AND daily_customers > 100
+
+SELECT * FROM postoffices WHERE year > 1900 OR daily_customers < 100
+
+SELECT * FROM postoffices WHERE (year > 1900 AND year < 1920) OR daily_customers > 100
+````
+
+##### Ordering: `ORDER BY`
+
+Order by year made
+
+````
+SELECT * FROM postoffices_ne ORDER BY year
+
+SELECT * FROM postoffices_ne ORDER BY year DESC
+````
+
+You can also set `ASC` for ascending, which is the default.
+
+##### Limiting: `LIMIT`
+
+Instead of showing every row, you can limit your query. This can be useful to make your queries faster or decrease the files size of your data export.
+
+Grab the first five
+
+````
+SELECT * FROM postoffices_ne LIMIT 5
+````
+
+This data isn't in any order though, so that query isn't very helpful. This will grab the five oldest.
+
+````
+SELECT * FROM postoffices_ne ORDER BY year LIMIT 5
+````
+
+### Selecting, counting
+
+##### Selecting
+
+We've been doing `SELECT` statements to create a view on our database. You might have noticed the `*`, which means "Get all columns". You can also only retrieve specific columns by name.
+
+````
+SELECT name, year, daily_customers FROM postoffice_ne LIMIT 10
+````
+
+Because this is a spatially-aware database, we also have a column that holds our lat/lng. PostGIS usually refers to this column as `geom` or `the_geom` in CartoDB.
+
+````
+SELECT name, year, daily_customers, the_geom FROM postoffice_ne LIMIT 10
+````
+
+##### Counting
+
+Let's say you want to know some aggregate information, like how many rows you have
+
+````
+SELECT count(*) FROM postoffice_ne
+
+SELECT count(*) FROM postoffice_ne WHERE year > 1950
+````
+
+### Spatial joining with `ST_Intersects()`
+
+Before, we joined two dataset based on a shared name. We had census tract shapes and a spreadsheet of census tract populations and we joined them on the census tract id.
+
+But data doesn't come preaggregated like this. What if we want to make a choropleth from point data.
+
+Let's make a make of Post Office density by county in Nebraska.
+
+Open up `counties_ne` and run this query and let's add a column, call it, `postoffices` and set its type to `number`.
+
+Run this query
+
+````
+UPDATE counties_ne SET postoffices = (SELECT count(*) FROM postoffices_ne WHERE ST_Intersects(postoffices_ne.the_geom, counties_ne.the_geom))
+````
+
+### Mapping distance with `ST_Distance()` and `ORDER BY <->`
+
+PostGIS is also really powerful for measuring distance, which can be a great story topic. Cezary Podkul did a great story a couple of years ago looking at Post Offices that were closing that were also far away from broadband access.
+
+We can do this same calculation right here. We'll measure the distance from each Post Office to the nearest area that has broadband.
+
+You can take a look at `broadband_ne`, which shows areas of Nebraska that have broadband access. We're actually going to be doing the measurement in `postoffices_ne` since that's the data we'll be modifying.
+
+Create a new column in `postoffices_ne` called `dist` and set its type to `number`.
+
+````
+UPDATE postoffices_ne SET dist = (SELECT ST_Distance(postoffices_ne.the_geom, broadband_ne.the_geom) FROM broadband_ne ORDER BY postoffices_ne.the_geom <-> broadband_ne.the_geom LIMIT 1)
+````
+
+### Other fun functions
+
+* [ST_MakeLine()](http://postgis.refractions.net/docs/ST_MakeLine.html)
+* [ST_Distance()](http://postgis.refractions.net/docs/ST_MakeLine.html)
+* [ST_MakeValid()](http://postgis.refractions.net/docs/ST_MakeValid.html)
+* [ST_DWithin()](http://postgis.refractions.net/docs/ST_DWithin.html)
+* [ST_Buffer()](http://postgis.refractions.net/docs/ST_Buffer.html)
 
 ### Links, resources
+
+* [PostGIS Documentation](http://postgis.net/docs/manual-dev/reference.html) - Read through the functions to see what it's capable of.
+
+* [PostGIS Homepage](http://postgis.net/)
+
+* [PostPostGIS](http://twitter.com/PostPostGIS) - A Twitter account that discusses geospatial analysis and critical theory.
