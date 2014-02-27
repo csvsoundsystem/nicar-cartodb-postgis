@@ -74,6 +74,24 @@ PostGIS is an extension for the open-source database PostgreSQL. It's a "spatial
 
 Follow [these guidelines](https://github.com/csvsoundsystem/nicar-cartodb-postgis/blob/gh-pages/SETUP.md#installing-postgis-locally) on how to set up PostgreSQL and PostGIS on your own machine.
 
+## Operators
+
+
+* `AND`
+* `OR`
+* `>`
+* `<`
+* `=`
+* `IS NULL` e.g. `SELECT * FROM tbl WHERE year IS NULL`
+* `IS NOT NULL` e.g. `SELECT * FROM tbl WHERE year IS NOT NULL`
+
+### Special Operators
+
+Indexed nearest neigbhor search. We'll get to this below.
+
+* `<->`
+* `<=>`
+
 ### Filtering, ordering, limiting
 
 Let's start working with historic Post Offices in Nebraska: `postoffices_ne`.
@@ -161,8 +179,33 @@ Open up `counties_ne` and run this query and let's add a column, call it, `posto
 Run this query
 
 ````
-UPDATE counties_ne SET postoffices = (SELECT count(*) FROM postoffices_ne WHERE ST_Intersects(postoffices_ne.the_geom, counties_ne.the_geom))
+UPDATE counties_ne SET postoffices = (
+  SELECT count(*) 
+  FROM postoffices_ne 
+  WHERE 
+  ST_Intersects(
+    postoffices_ne.the_geom, 
+    counties_ne.the_geom 
+  )
+)
 ````
+
+More generically:
+
+````
+UPDATE name_of_polygon_table SET new_column_name = (
+  SELECT count(*) 
+  FROM name_of_point_table 
+  WHERE 
+  ST_Intersects(
+    name_of_point_table.the_geom, 
+    name_of_polygon_table.the_geom 
+  )
+)
+````
+
+Note: If you aren't using CartoDB, replace `the_geom` with `geom`.
+
 
 ### Mapping distance with `ST_Distance()` and `ORDER BY <->`
 
@@ -175,8 +218,32 @@ You can take a look at `broadband_ne`, which shows areas of Nebraska that have b
 Create a new column in `postoffices_ne` called `dist` and set its type to `number`.
 
 ````
-UPDATE postoffices_ne SET dist = (SELECT ST_Distance(postoffices_ne.the_geom, broadband_ne.the_geom) FROM broadband_ne ORDER BY postoffices_ne.the_geom <-> broadband_ne.the_geom LIMIT 1)
+UPDATE postoffices_ne SET dist = (
+  SELECT ST_Distance(
+            postoffices_ne.the_geom, 
+            broadband_ne.the_geom
+          )
+          FROM broadband_ne 
+          ORDER BY postoffices_ne.the_geom <-> broadband_ne.the_geom 
+          LIMIT 1
+)
 ````
+
+Or more generically:
+
+````
+UPDATE name_of_point_table SET new_column_name = (
+  SELECT ST_Distance(
+            name_of_point_table.the_geom, 
+            name_of_polygon_table.the_geom
+          )
+          FROM broadband_ne 
+          ORDER BY name_of_point_table.the_geom <-> name_of_polygon_table.the_geom 
+          LIMIT 1
+)
+````
+Note: If you aren't using CartoDB, replace `the_geom` with `geom`.
+
 
 ### Other fun functions
 
