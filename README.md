@@ -69,8 +69,8 @@ Importing data into CartoDB is easy! All you need is a file in a supported forma
 
 | File          | Dataset name     | Geom type |
 | ------------- |:----------------:|:---------:|
-| [postoffices_ne.zip](http://csvsoundsystem.github.io/nicar-cartodb-postgis/data/postoffices_ne.zip) | US Post Offices | points |
 | [counties_ne.zip](http://csvsoundsystem.github.io/nicar-cartodb-postgis/data/counties_ne.zip) | Nebraska Counties   | polygons |
+| [postoffices_ne.zip](http://csvsoundsystem.github.io/nicar-cartodb-postgis/data/postoffices_ne.zip) | US Post Offices | points |
 
 ##### Four ways to get data into CartoDB
 
@@ -85,7 +85,7 @@ Importing data into CartoDB is easy! All you need is a file in a supported forma
 
 Let's start by importing the dataset of Nebraska Counties.
 
-1. Right click the above link, copy URL to clipboard
+1. Right click the [counties_ne.zip link](http://csvsoundsystem.github.io/nicar-cartodb-postgis/data/counties_ne.zip), copy URL to clipboard
 2. Go to your CartoDB dasboard in the table manager
 3. Click ```New table```
 4. Paste the data URL into the form field
@@ -107,19 +107,35 @@ You can add infowindows and legends to any maps you create. There are some nice 
 
 ![infowindows and legends](http://csvsoundsystem.github.io/nicar-cartodb-postgis/assets/gifs/legends.gif)
 
-### Visualizing two datasets
+### Visualizations
 
-### Name joins
+Let's start by importing the second dataset of Nebraska Post Offices. Go back to your table manager, then
 
-... for census tracts, the column to join on is `borotract_id` in `nyc_tract_populations` and `boroct2010` in `nyc_tracts2010`
+1. Right click the [postoffices_ne.zip link](http://csvsoundsystem.github.io/nicar-cartodb-postgis/data/postoffices_ne.zip), copy URL to clipboard
+2. Go to your CartoDB dasboard in the table manager
+3. Click ```New table```
+4. Paste the data URL into the form field
+5. Click ```Create table```
 
-## Publish maps
+Now that we have our Post Office dataset, let's create a visualization. You do this by clicking the ```VISUALIZE``` button in the upper right. Next, give your visualization a name. This will take you to a new visualization where you can publish you can finalize design, add new layers, or publish your map.
 
-### Infowindows
+### Combine layers
 
-### Legends
+Visualizations allow you to mix multiple datasets into a layered map. You can add a new layer by clicking the plus sign directly above the right-hand menu.
 
-### Links, embeds, CartoDB.js
+![infowindows and legends](http://csvsoundsystem.github.io/nicar-cartodb-postgis/assets/gifs/layers.gif)
+
+You can reorder the layers on the map by dragging layers up through the stack. Each layer can be styled and edited independantly. You can also add interactivity and legends for the layers. 
+
+### Publish maps
+
+Right away you can get a public link for your visualization. Where the button ```VISUALIZE``` used to be, it should new say ```PUBLISH```. From there you can get the menu for publishing maps.
+
+![infowindows and legends](http://csvsoundsystem.github.io/nicar-cartodb-postgis/assets/gifs/visualize.gif)
+
+##### Links, embeds, CartoDB.js
+
+Publishing maps can be as simple as getting the sharable URL. The interface also gives you an ```embed``` option for adding maps to your blog or website. It also has an ```API``` option, for using your visualization with our [CartoDB.js](http://developers.cartodb.com/documentation/cartodb-js.html) library. CartoDB.js will allow you to integrate highly customized maps directly into your website. For now, sharable URLs and map embeds should get you pretty far.
 
 # PostGIS
 
