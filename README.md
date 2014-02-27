@@ -83,11 +83,21 @@ Importing data into CartoDB is easy! All you need is a file in a supported forma
 
 #### First data import
 
-Let's start by importing the dataset of US Post Offices
+Let's start by importing the dataset of Nebraska Counties.
+
+1. Right click the above link, copy URL to clipboard
+2. Go to your CartoDB dasboard in the table manager
+3. Click ```New table```
+4. Paste the data URL into the form field
+5. Click ```Create table```
 
 ## Creating maps
 
 ### Basic map styling
+
+##### Choropleths, Category maps, Bubble maps
+
+![import](http://csvsoundsystem.github.io/nicar-cartodb-postgis/assets/gifs/import.gif)
 
 ### Visualizing two datasets
 
