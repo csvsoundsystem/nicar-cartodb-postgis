@@ -7,7 +7,7 @@
 
 This workshop is first and foremost and introduction to PostGIS and the power of geospatial processing with open source tools. To get you there quickly, we are using the CartoDB platform. CartoDB is an open source tool that uses PostGIS to create dynamic interactive maps. CartoDB runs directly in the browser, allowing us to avoid having to install PostGIS during this introduction workshop.
 
-##### Us?
+##### Who
 
 * [Michael Keller](https://twitter.com/mhkeller)
 * [Andrew Hill](https://twitter.com/andrewxhill)
@@ -43,6 +43,11 @@ Importing data into CartoDB is easy! All you need is a file in a supported forma
 ![import](http://csvsoundsystem.github.io/nicar-cartodb-postgis/assets/gifs/import.gif)
 
 #### Datasets
+
+| File          | Dataset name     | Geom type |
+| ------------- |:----------------:| ---------:|
+| [postoffices_ne.zip](http://csvsoundsystem.github.io/nicar-cartodb-postgis/data/postoffices_ne.zip) | postoffices_ne | points |
+| [counties_ne.zip](http://csvsoundsystem.github.io/nicar-cartodb-postgis/data/counties_ne.zip) | counties_ne    | polygons |
 
 [Poll sites](http://csvsoundsystem.github.io/nicar-cartodb-postgis/data/poll_sites.zip)
 
