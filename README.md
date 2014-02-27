@@ -185,6 +185,7 @@ UPDATE postoffices_ne SET dist = (SELECT ST_Distance(postoffices_ne.the_geom, br
 * [ST_MakeValid()](http://postgis.refractions.net/docs/ST_MakeValid.html)
 * [ST_DWithin()](http://postgis.refractions.net/docs/ST_DWithin.html)
 * [ST_Buffer()](http://postgis.refractions.net/docs/ST_Buffer.html)
+* [ST_Intersection()](http://postgis.refractions.net/docs/ST_Intersection.html) - Similar to Clip in ArcMap: "Returns a geometry that represents the shared portion of geomA and geomB."
 
 ### Links, resources
 
