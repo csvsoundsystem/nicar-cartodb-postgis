@@ -99,6 +99,10 @@ Let's start by importing the dataset of Nebraska Counties.
 
 ![import](http://csvsoundsystem.github.io/nicar-cartodb-postgis/assets/gifs/styling.gif)
 
+##### Infowindows and legends
+
+![import](http://csvsoundsystem.github.io/nicar-cartodb-postgis/assets/gifs/legends.gif)
+
 ### Visualizing two datasets
 
 ### Name joins
