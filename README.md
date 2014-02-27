@@ -40,16 +40,25 @@ As you start expirementing more you'll want to know about the [GIS StackExchange
 
 Importing data into CartoDB is easy! All you need is a file in a supported format (CSV, KML, GeoJSON, and Shapefile are all good ones) either online or on your desktop. You can drag local files right to your browser to import. Remote files you can import by pasting the URL into the import field.
 
-![import](http://csvsoundsystem.github.io/nicar-cartodb-postgis/assets/gifs/import.gif)
-
 #### Datasets
 
 | File          | Dataset name     | Geom type |
-| ------------- |:----------------:| ---------:|
+| ------------- |:----------------:|:---------:|
 | [postoffices_ne.zip](http://csvsoundsystem.github.io/nicar-cartodb-postgis/data/postoffices_ne.zip) | postoffices_ne | points |
 | [counties_ne.zip](http://csvsoundsystem.github.io/nicar-cartodb-postgis/data/counties_ne.zip) | counties_ne    | polygons |
 
-[Poll sites](http://csvsoundsystem.github.io/nicar-cartodb-postgis/data/poll_sites.zip)
+##### Four ways to get data into CartoDB
+
+1. Drag and drop a file or a ZIP to you dashboard
+2. Import from a URL
+3. Add new data to a row in your tables or by drawing on the map
+4. Use authenticated [SQL API](http://developers.cartodb.com/documentation/sql-api.html) calls to write data
+
+![import](http://csvsoundsystem.github.io/nicar-cartodb-postgis/assets/gifs/import.gif)
+
+##### Supported data typs
+
+CartoDB handles a range of different data formats. CSV, KML, GeoJSON are all supported. If you have an Shapefile, be sure it is a ZIP containing all the files associated with the SHP at once including the ```.PRJ``` file. If it is a KML the data must be pretty flat (not nested in folders) and if it is GeoJSON some of the Collections containing mixed data types can cause problems. 
 
 ### Using the dashboard
 
