@@ -36,6 +36,31 @@ CartoDB allows you to make more than just maps, it can help you build entire geo
 
 As you start expirementing more you'll want to know about the [GIS StackExchange](http://gis.stackexchange.com/questions/tagged/cartodb). If you tag questions with ```cartodb```, ```postgis``` or both you will get great help from the community. Just remember to keep question titles short and descriptive. Same goes for the question content, keep it short and to the point. Include links to code (preferably code that wont disappear in the future) or include portions of relevant code for potential helpers to better understand your problem.
 
+
+### Using the dashboard
+
+The CartoDB dashboard is broken down into a few different interfaces. 
+
+##### The table manager
+
+This is the first page you see when you load your account. It is where you will drag new files for upload or create new blank tables. You can see and delete existing datasets here.
+
+##### The table view
+
+When you load a new dataset or load an old one, you'll be brought to the table view. The table view lets you look at the ```columns``` and ```rows``` of your data. You can edit individual values. You can change column names and types. You can filter your data and query it using ```SQL```.
+
+##### Map view
+
+From any table, you can click ```Map``` to see the map of the data. As long as your data contained some geospatial information, it should appear on the map. From here, you can style and edit your geospatial data. It is a good place for prototyping published visualizations.
+
+##### Visualization
+
+Whenever you want to publish a map or combine multiple map layers into a single map to be published, you'll create what is called a ```Visualization```. Visualizations live above maps and tables. They are linked directly to the data in your tables, but you can change the styles and filters of a visualization as much as you like. Visualizations do not take up more space on your account. So from one dataset, you can publish many visualizations.
+
+##### Visualization manager
+
+Just like your table manager, there is a page for you to see all your visualizations. You can also delete visualizations. Deleting a visualization will not remove the underlying table or map. 
+
 ### Importing data
 
 Importing data into CartoDB is easy! All you need is a file in a supported format (CSV, KML, GeoJSON, and Shapefile are all good ones) either online or on your desktop. You can drag local files right to your browser to import. Remote files you can import by pasting the URL into the import field.
@@ -44,8 +69,8 @@ Importing data into CartoDB is easy! All you need is a file in a supported forma
 
 | File          | Dataset name     | Geom type |
 | ------------- |:----------------:|:---------:|
-| [postoffices_ne.zip](http://csvsoundsystem.github.io/nicar-cartodb-postgis/data/postoffices_ne.zip) | postoffices_ne | points |
-| [counties_ne.zip](http://csvsoundsystem.github.io/nicar-cartodb-postgis/data/counties_ne.zip) | counties_ne    | polygons |
+| [postoffices_ne.zip](http://csvsoundsystem.github.io/nicar-cartodb-postgis/data/postoffices_ne.zip) | US Post Offices | points |
+| [counties_ne.zip](http://csvsoundsystem.github.io/nicar-cartodb-postgis/data/counties_ne.zip) | Nebraska Counties   | polygons |
 
 ##### Four ways to get data into CartoDB
 
@@ -56,11 +81,9 @@ Importing data into CartoDB is easy! All you need is a file in a supported forma
 
 ![import](http://csvsoundsystem.github.io/nicar-cartodb-postgis/assets/gifs/import.gif)
 
-##### Supported data typs
+#### First data import
 
-CartoDB handles a range of different data formats. CSV, KML, GeoJSON are all supported. If you have an Shapefile, be sure it is a ZIP containing all the files associated with the SHP at once including the ```.PRJ``` file. If it is a KML the data must be pretty flat (not nested in folders) and if it is GeoJSON some of the Collections containing mixed data types can cause problems. 
-
-### Using the dashboard
+Let's start by importing the dataset of US Post Offices
 
 ## Creating maps
 
