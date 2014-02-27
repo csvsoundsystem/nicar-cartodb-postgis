@@ -99,7 +99,11 @@ Let's start by importing the dataset of Nebraska Counties.
 
 ![styling](http://csvsoundsystem.github.io/nicar-cartodb-postgis/assets/gifs/styling.gif)
 
+There are many styles possible in CartoDB. The tool includes a simple style wizard for you to apply and customize just some of these. When you grow out of the wizard, you'll want to dig into the CSS editor to really customize your maps.
+
 ##### Infowindows and legends
+
+You can add infowindows and legends to any maps you create. There are some nice simple tools for you to create and customize. As you learn more though, you can also take advantage of full HTML templating to make them look and behave exactly as you want.
 
 ![infowindows and legends](http://csvsoundsystem.github.io/nicar-cartodb-postgis/assets/gifs/legends.gif)
 
