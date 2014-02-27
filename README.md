@@ -97,7 +97,7 @@ Let's start by importing the dataset of Nebraska Counties.
 
 ##### Choropleths, Category maps, Bubble maps
 
-![import](http://csvsoundsystem.github.io/nicar-cartodb-postgis/assets/gifs/import.gif)
+![import](http://csvsoundsystem.github.io/nicar-cartodb-postgis/assets/gifs/styling.gif)
 
 ### Visualizing two datasets
 
