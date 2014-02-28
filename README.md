@@ -1,7 +1,7 @@
 # Table of contents
 * [Overview](!overview)
-* [CartoDB](!introduction-to-cartodb)
-* [PostGIS](!postgis)
+* [CartoDB tutorial](!introduction-to-cartodb)
+* [PostGIS tutorial](!postgis)
 
 # Overview
 
@@ -9,8 +9,8 @@ This workshop is first and foremost and introduction to PostGIS and the power of
 
 ##### Who
 
-* [Michael Keller](https://twitter.com/mhkeller)
-* [Andrew Hill](https://twitter.com/andrewxhill)
+* [Michael Keller](https://twitter.com/mhkeller) - Al Jazeera America
+* [Andrew Hill](https://twitter.com/andrewxhill) - Vizzuality
 
 ### Bonus
 
