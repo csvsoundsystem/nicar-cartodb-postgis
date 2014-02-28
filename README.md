@@ -337,7 +337,7 @@ Note: If you aren't using CartoDB, replace `the_geom` with `geom`.
 
 We used this at Al Jazeera America for a [story on Syrian refugees](http://projects.aljazeera.com/2013/syrias-refugees/index.html) showing how much space that many people take up in the US to give context to an international story.
 
-![syrian_refugees](http://csvsoundsystem.github.io/nicar-cartodb-postgis/assets/png/syria-map.png)
+![syrian_refugees](http://csvsoundsystem.github.io/nicar-cartodb-postgis/assets/pngs/syria-map.png)
 
 
 ### Other fun functions
@@ -352,11 +352,11 @@ We used this at Al Jazeera America for a [story on Syrian refugees](http://proje
 
 ST_MakeLine example - [plotting a ships location from lat/lng points](http://america.aljazeera.com/multimedia/2013/11/27-days-on-a-cargoshipfromchina.html)
 
-![cargo](http://csvsoundsystem.github.io/nicar-cartodb-postgis/assets/png/cargo-map.png)
+![cargo](http://csvsoundsystem.github.io/nicar-cartodb-postgis/assets/pngs/cargo-map.png)
 
 ST_Distance example - [measuring distance from abortion clinics](http://www.thedailybeast.com/articles/2013/01/22/interactive-map-america-s-abortion-clinics.html)
 
-![clinics](http://csvsoundsystem.github.io/nicar-cartodb-postgis/assets/png/abortion-distance-map.png)
+![clinics](http://csvsoundsystem.github.io/nicar-cartodb-postgis/assets/pngs/abortion-distance-map.png)
 
 
 ### Links, resources
