@@ -335,16 +335,29 @@ UPDATE name_of_point_table SET new_column_name = (
 ````
 Note: If you aren't using CartoDB, replace `the_geom` with `geom`.
 
+We used this at Al Jazeera America for a [story on Syrian refugees](http://projects.aljazeera.com/2013/syrias-refugees/index.html) showing how much space that many people take up in the US to give context to an international story.
+
+![syrian_refugees](http://csvsoundsystem.github.io/nicar-cartodb-postgis/assets/png/syria-map.png)
+
 
 ### Other fun functions
 
-* [ST_AsGeoJson()](http://postgis.refractions.net/docs/ST_AsGeoJSON.html)
-* [ST_MakeLine()](http://postgis.refractions.net/docs/ST_MakeLine.html)
-* [ST_Distance()](http://postgis.refractions.net/docs/ST_MakeLine.html)
-* [ST_MakeValid()](http://postgis.refractions.net/docs/ST_MakeValid.html)
-* [ST_DWithin()](http://postgis.refractions.net/docs/ST_DWithin.html)
-* [ST_Buffer()](http://postgis.refractions.net/docs/ST_Buffer.html)
+* [ST_AsGeoJson()](http://postgis.refractions.net/docs/ST_AsGeoJSON.html) - Convert your `geom` column to GeoJSON. Useful for exporting your data or returning it to the client web browser to plot using Leaflet.js.
+* [ST_MakeLine()](http://postgis.refractions.net/docs/ST_MakeLine.html) - Convert points into a line. We used this at Al Jazeera America to [scrape a ship's location and then dynamically plot that route](http://america.aljazeera.com/multimedia/2013/11/27-days-on-a-cargoshipfromchina.html).
+* [ST_Distance()](http://postgis.refractions.net/docs/ST_MakeLine.html) - Measure the distance. We used this at The Daily Beast to create a [map of distance away from abortion clinics from every point in the country](http://www.thedailybeast.com/articles/2013/01/22/interactive-map-america-s-abortion-clinics.html).
+* [ST_MakeValid()](http://postgis.refractions.net/docs/ST_MakeValid.html) - If you have errors in your shapefiles, this might fix them.
+* [ST_DWithin()](http://postgis.refractions.net/docs/ST_DWithin.html) - Find features that are within a certain specified distance of your feature. E.g. Find all census blocks near a mile of oil wells and add up their populations.
+* [ST_Buffer()](http://postgis.refractions.net/docs/ST_Buffer.html) - Draw a circle around a point. Similar but not as powerful as `ST_DWithin`.
 * [ST_Intersection()](http://postgis.refractions.net/docs/ST_Intersection.html) - Similar to Clip in ArcMap: "Returns a geometry that represents the shared portion of geomA and geomB."
+
+ST_MakeLine example - [plotting a ships location from lat/lng points](http://america.aljazeera.com/multimedia/2013/11/27-days-on-a-cargoshipfromchina.html)
+
+![cargo](http://csvsoundsystem.github.io/nicar-cartodb-postgis/assets/png/cargo-map.png)
+
+ST_Distance example - [measuring distance from abortion clinics](http://www.thedailybeast.com/articles/2013/01/22/interactive-map-america-s-abortion-clinics.html)
+
+![clinics](http://csvsoundsystem.github.io/nicar-cartodb-postgis/assets/png/abortion-distance-map.png)
+
 
 ### Links, resources
 
