@@ -139,20 +139,25 @@ Publishing maps can be as simple as getting the sharable URL. The interface also
 
 # PostGIS
 
-PostGIS is an extension for the open-source database PostgreSQL. It's a "spatially-aware" database. For example, let's say you have a spreadsheet with a latitude and a longitude column. To a normal database, those are just numbers. To PostGIS, it knows they are geography, which lets you do things like find all points within a certain radius of a given point, or calculate the distance from these points to other things.
+PostGIS is an extension for the open-source database PostgreSQL. It's a "spatially-aware" database. For example, let's say you have a spreadsheet with a latitude and a longitude column. To a normal database, those are just numbers. To PostGIS, they are certain places in the world. Knowing that lets you do things like find all points within a certain radius of a given point, or calculate the distance from these points to other things.
 
 ## Installation
 
-Follow [these guidelines](https://github.com/csvsoundsystem/nicar-cartodb-postgis/blob/gh-pages/SETUP.md#installing-postgis-locally) on how to set up PostgreSQL and PostGIS on your own machine.
+You can install PostGIS locally on your comptuer by following [these guidelines](https://github.com/csvsoundsystem/nicar-cartodb-postgis/blob/gh-pages/SETUP.md#installing-postgis-locally). Since PostGIS is an extension of PostgreSQL, you install PostgreSQL and then activate the PostGIS plugin.
+
+You can also use [CartoDB](http://cartodb.com) -- like we're doing today -- since CartoDB is in part an interface on top of a PostGIS database. Or you can spin up a PostgreSQL database through [Amazon Web Services](http://aws.amazon.com).
+
+A word of caution: installing PostgreSQL is sometimes no small undertaking and can sometimes be very complicated if the installation doesn't play nicely with your system. Hence, why we're using CartoDB today.
 
 ## Operators
 
+PostGIS looks a lot like SQL, because it's based on SQL.
 
-* `AND`
-* `OR`
-* `>`
+* `>` e.g. `SELECT * FROM tbl WHERE year > 1950`
 * `<`
 * `=`
+* `AND`
+* `OR`
 * `IS NULL` e.g. `SELECT * FROM tbl WHERE year IS NULL`
 * `IS NOT NULL` e.g. `SELECT * FROM tbl WHERE year IS NOT NULL`
 
@@ -161,7 +166,6 @@ Follow [these guidelines](https://github.com/csvsoundsystem/nicar-cartodb-postgi
 Indexed nearest neigbhor search. We'll get to this below.
 
 * `<->`
-* `<=>`
 
 ### Filtering, ordering, limiting
 
@@ -174,13 +178,13 @@ Click on the `SQL` tab we can start doing some basic querying.
 SQL can filter using the `WHERE` command.
 
 ````
-SELECT * FROM postoffices WHERE year < 1900
+SELECT * FROM postoffices_ne WHERE year < 1900
 
-SELECT * FROM postoffices WHERE year > 1900 AND year < 1920 AND daily_customers > 100
+SELECT * FROM postoffices_ne WHERE year > 1900 AND year < 1920 AND daily_customers > 100
 
-SELECT * FROM postoffices WHERE year > 1900 OR daily_customers < 100
+SELECT * FROM postoffices_ne WHERE year > 1900 OR daily_customers < 100
 
-SELECT * FROM postoffices WHERE (year > 1900 AND year < 1920) OR daily_customers > 100
+SELECT * FROM postoffices_ne WHERE (year > 1900 AND year < 1920) OR daily_customers > 100
 ````
 
 ##### Ordering: `ORDER BY`
@@ -218,13 +222,19 @@ SELECT * FROM postoffices_ne ORDER BY year LIMIT 5
 We've been doing `SELECT` statements to create a view on our database. You might have noticed the `*`, which means "Get all columns". You can also only retrieve specific columns by name.
 
 ````
-SELECT name, year, daily_customers FROM postoffice_ne LIMIT 10
+SELECT name, year, daily_customers FROM postoffices_ne LIMIT 10
 ````
 
 Because this is a spatially-aware database, we also have a column that holds our lat/lng. PostGIS usually refers to this column as `geom` or `the_geom` in CartoDB.
 
 ````
-SELECT name, year, daily_customers, the_geom FROM postoffice_ne LIMIT 10
+SELECT name, year, daily_customers, the_geom FROM postoffices_ne LIMIT 10
+````
+
+And we can convert that geometry into different formats
+
+````
+SELECT ST_AsGeoJSon(the_geom), name, year, daily_customers FROM postoffices_ne
 ````
 
 ##### Counting
@@ -232,22 +242,20 @@ SELECT name, year, daily_customers, the_geom FROM postoffice_ne LIMIT 10
 Let's say you want to know some aggregate information, like how many rows you have
 
 ````
-SELECT count(*) FROM postoffice_ne
+SELECT count(*) FROM postoffices_ne
 
-SELECT count(*) FROM postoffice_ne WHERE year > 1950
+SELECT count(*) FROM postoffices_ne WHERE year > 1950
 ````
 
 ### Spatial joining with `ST_Intersects()`
 
-Before, we joined two dataset based on a shared name. We had census tract shapes and a spreadsheet of census tract populations and we joined them on the census tract id.
+Sometimes you join data based on a shared column id. You can do that in CartoDB with the merge tool. But, data doesn't come preaggregated like this. What if we want to make a choropleth from point data?
 
-But data doesn't come preaggregated like this. What if we want to make a choropleth from point data.
+Let's make a make of Post Office density by county in Nebraska. It might not look that cool, it's probably just a population map, but the concept you can use over and over.
 
-Let's make a make of Post Office density by county in Nebraska.
+Open up `counties_ne` and let's add a column, call it, `postoffices` and set its type to `number`.
 
-Open up `counties_ne` and run this query and let's add a column, call it, `postoffices` and set its type to `number`.
-
-Run this query
+Now, run this query:
 
 ````
 UPDATE counties_ne SET postoffices = (
@@ -260,6 +268,10 @@ UPDATE counties_ne SET postoffices = (
   )
 )
 ````
+
+Let's start with the `SELECT` query first. We're counting the number of Post Offices `WHERE` the geometries from each table overlap. Put differently, For each county, count the number of Post Offices that fall within its borders.
+
+Next, add our counties row with that number. That's where the `UPDATE` query comes in. Usually, it makes most sense to read SQL queries inside out, like math equations.
 
 More generically:
 
@@ -280,7 +292,7 @@ Note: If you aren't using CartoDB, replace `the_geom` with `geom`.
 
 ### Mapping distance with `ST_Distance()` and `ORDER BY <->`
 
-PostGIS is also really powerful for measuring distance, which can be a great story topic. Cezary Podkul did a great story a couple of years ago looking at Post Offices that were closing that were also far away from broadband access.
+PostGIS is also really powerful for measuring distance, which can be a great story topic. Cezary Podkul [did a great story a couple of years ago](http://www.reuters.com/article/2012/02/14/us-usa-usps-idUSTRE81D0M620120214) at Reuters looking at Post Offices that were closing that were also far away from broadband access.
 
 We can do this same calculation right here. We'll measure the distance from each Post Office to the nearest area that has broadband.
 
@@ -300,6 +312,12 @@ UPDATE postoffices_ne SET dist = (
 )
 ````
 
+So, starting from the outside in, we're ordering our table with this crazy `<->` operator, which finds the lat/lng of a Post Office point and sorts the table in ascending order of distance to that point. In other words, take a given post office, and sort the areas in the broadband table in order of increasing distance away from that point -- do that for every post office point.
+
+Now, you can see in the `SELECT` part, we're then measuring the distance between that Post Office and the areas with broadband. This query would measure the distance from a given post office to __every__ point with broadband but we just want the first one. Because the `ORDER BY` has already put the closest broadband area first, we just need the measurement to first row, so hence the `LIMIT 1`.
+
+Now, do the same `UPDATE` query and add it as our `dist` column, for every post office.
+
 Or more generically:
 
 ````
@@ -318,6 +336,7 @@ Note: If you aren't using CartoDB, replace `the_geom` with `geom`.
 
 ### Other fun functions
 
+* [ST_AsGeoJson()](http://postgis.refractions.net/docs/ST_AsGeoJSON.html)
 * [ST_MakeLine()](http://postgis.refractions.net/docs/ST_MakeLine.html)
 * [ST_Distance()](http://postgis.refractions.net/docs/ST_MakeLine.html)
 * [ST_MakeValid()](http://postgis.refractions.net/docs/ST_MakeValid.html)
