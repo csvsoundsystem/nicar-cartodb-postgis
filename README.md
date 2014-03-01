@@ -196,7 +196,7 @@ SELECT * FROM postoffices_ne WHERE yr_est < 1860
 SELECT * FROM postoffices_ne WHERE elev < 400
 
 -- filter by two conditions
-SELECT * FROM postoffices_ne WHERE yr_est > 1880 AND yr_est < 1890
+SELECT * FROM postoffices_ne WHERE yr_est > 1860 AND yr_est < 1870
 
 -- filter by with an OR
 SELECT * FROM postoffices_ne WHERE yr_est > 1890 OR elev < 300
@@ -246,19 +246,19 @@ SELECT * FROM postoffices_ne ORDER BY elev DESC LIMIT 5
 We've been doing `SELECT` statements to create a view on our database. You might have noticed the `*`, which means "Get all columns". You can also only retrieve specific columns by name.
 
 ````
-SELECT name, yr_est, elev FROM postoffices_ne LIMIT 10
+SELECT county, yr_est, elev FROM postoffices_ne LIMIT 10
 ````
 
 Because this is a spatially-aware database, we also have a column that holds our lat/lng. PostGIS usually refers to this column as `geom` or `the_geom` in CartoDB.
 
 ````
-SELECT name, yr_est, elev, the_geom FROM postoffices_ne LIMIT 10
+SELECT county, yr_est, elev, the_geom FROM postoffices_ne LIMIT 10
 ````
 
 And we can convert that geometry into different formats
 
 ````
-SELECT ST_AsGeoJSon(the_geom), name, yr_est, elev FROM postoffices_ne
+SELECT ST_AsGeoJSon(the_geom), county, yr_est, elev FROM postoffices_ne
 ````
 
 ##### Counting
