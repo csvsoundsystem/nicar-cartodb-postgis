@@ -345,6 +345,35 @@ We used this at Al Jazeera America for a [story on Syrian refugees](http://proje
 
 ![syrian_refugees](http://csvsoundsystem.github.io/nicar-cartodb-postgis/assets/pngs/syria-map.png)
 
+### Counting by area
+
+It can be nice to know how many points fall within a polygon. In this case, how many post offices are in each county? To do that, create a new column in ```counties_ne``` called ```po_density```. Now run,
+
+```
+UPDATE counties_ne SET po_density =
+      (
+        SELECT 
+          count(*) 
+        FROM 
+          postoffices_ne 
+        WHERE 
+          ST_Intersects(counties_ne.the_geom, the_geom)
+      )
+```
+
+This runs a subquery that counts all the post offices within each county polygon. It is also possible to normalize it by the area of each county,
+
+```
+UPDATE counties_ne SET po_density =
+      (
+        SELECT 
+          count(*) 
+        FROM 
+          postoffices_ne 
+        WHERE 
+          ST_Intersects(counties_ne.the_geom, the_geom)
+      ) / ST_Area(the_geom::geography)
+```
 
 ### Other fun functions
 
