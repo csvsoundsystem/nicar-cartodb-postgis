@@ -16,8 +16,8 @@ This workshop is first and foremost and introduction to PostGIS and the power of
 
 ##### Who
 
-* [Michael Keller](https://twitter.com/mhkeller) (@mhkeller) - Al Jazeera America
-* [Andrew Hill](https://twitter.com/andrewxhill) (@andrewxhill) - Vizzuality
+* Andrew Hill, [@andrewxhill](https://twitter.com/andrewxhill) -  Vizzuality
+* Michael Keller, [@mhkeller](https://twitter.com/mhkeller) - Al Jazeera America
 
 ### Bonus
 
