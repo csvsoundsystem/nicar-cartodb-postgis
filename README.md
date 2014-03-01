@@ -166,7 +166,7 @@ A word of caution: installing PostgreSQL is sometimes no small undertaking and c
 
 PostGIS looks a lot like SQL, because it's based on SQL.
 
-* `>` e.g. `SELECT * FROM tbl WHERE year > 1950`
+* `>` e.g. `SELECT * FROM tbl WHERE year > 1880`
 * `<`
 * `=`
 * `AND`
@@ -176,7 +176,7 @@ PostGIS looks a lot like SQL, because it's based on SQL.
 
 ### Special Operators
 
-[Indexed nearest neigbhor](http://boundlessgeo.com/2011/09/indexed-nearest-neighbour-search-in-postgis/) search. We'll get to this below.
+[Indexed nearest neighbor](http://boundlessgeo.com/2011/09/indexed-nearest-neighbour-search-in-postgis/) search. We'll get to this below.
 
 * `<->`
 
@@ -191,26 +191,28 @@ Click on the `SQL` tab we can start doing some basic querying.
 SQL can filter using the `WHERE` command.
 
 ````
-SELECT * FROM postoffices_ne WHERE year < 1900
+SELECT * FROM postoffices_ne WHERE yr_est < 1860
+
+SELECT * FROM postoffices_ne WHERE elev < 400
 
 -- filter by two conditions
-SELECT * FROM postoffices_ne WHERE year > 1900 AND year < 1920 AND daily_customers > 100
+SELECT * FROM postoffices_ne WHERE yr_est > 1880 AND yr_est < 1890
 
 -- filter by with an OR
-SELECT * FROM postoffices_ne WHERE year > 1900 OR daily_customers < 100
+SELECT * FROM postoffices_ne WHERE yr_est > 1890 OR elev < 300
 
 -- More complex OR and AND
-SELECT * FROM postoffices_ne WHERE (year > 1900 AND year < 1920) OR daily_customers > 100
+SELECT * FROM postoffices_ne WHERE (yr_est > 1870 AND yr_est < 1899) OR elev > 1400
 ````
 
 ##### Ordering: `ORDER BY`
 
-Order by year made
+Order by yr_est made
 
 ````
-SELECT * FROM postoffices_ne ORDER BY year
+SELECT * FROM postoffices_ne ORDER BY yr_est
 
-SELECT * FROM postoffices_ne ORDER BY year DESC
+SELECT * FROM postoffices_ne ORDER BY yr_est DESC
 ````
 
 You can also set `ASC` for ascending, which is the default.
@@ -228,7 +230,13 @@ SELECT * FROM postoffices_ne LIMIT 5
 This data isn't in any order though, so that query isn't very helpful. This will grab the five oldest.
 
 ````
-SELECT * FROM postoffices_ne ORDER BY year LIMIT 5
+SELECT * FROM postoffices_ne ORDER BY yr_est LIMIT 5
+````
+
+Or you can grab the five highest
+
+````
+SELECT * FROM postoffices_ne ORDER BY elev DESC LIMIT 5
 ````
 
 ### Selecting, counting
@@ -238,19 +246,19 @@ SELECT * FROM postoffices_ne ORDER BY year LIMIT 5
 We've been doing `SELECT` statements to create a view on our database. You might have noticed the `*`, which means "Get all columns". You can also only retrieve specific columns by name.
 
 ````
-SELECT name, year, daily_customers FROM postoffices_ne LIMIT 10
+SELECT name, yr_est, elev FROM postoffices_ne LIMIT 10
 ````
 
 Because this is a spatially-aware database, we also have a column that holds our lat/lng. PostGIS usually refers to this column as `geom` or `the_geom` in CartoDB.
 
 ````
-SELECT name, year, daily_customers, the_geom FROM postoffices_ne LIMIT 10
+SELECT name, yr_est, elev, the_geom FROM postoffices_ne LIMIT 10
 ````
 
 And we can convert that geometry into different formats
 
 ````
-SELECT ST_AsGeoJSon(the_geom), name, year, daily_customers FROM postoffices_ne
+SELECT ST_AsGeoJSon(the_geom), name, yr_est, elev FROM postoffices_ne
 ````
 
 ##### Counting
@@ -260,7 +268,7 @@ Let's say you want to know some aggregate information, like how many rows you ha
 ````
 SELECT count(*) FROM postoffices_ne
 
-SELECT count(*) FROM postoffices_ne WHERE year > 1950
+SELECT count(*) FROM postoffices_ne WHERE yr_est > 1880
 ````
 
 ### Spatial joining with `ST_Intersects()`
