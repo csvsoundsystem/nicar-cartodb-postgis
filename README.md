@@ -9,8 +9,8 @@ This workshop is first and foremost and introduction to PostGIS and the power of
 
 ##### Who
 
-* [Michael Keller](https://twitter.com/mhkeller) - Al Jazeera America
-* [Andrew Hill](https://twitter.com/andrewxhill) - Vizzuality
+* [Michael Keller](https://twitter.com/mhkeller) (@mhkeller) - Al Jazeera America
+* [Andrew Hill](https://twitter.com/andrewxhill) (@andrewxhill) - Vizzuality
 
 ### Bonus
 
@@ -140,6 +140,12 @@ Publishing maps can be as simple as getting the sharable URL. The interface also
 # PostGIS
 
 PostGIS is an extension for the open-source database PostgreSQL. It's a "spatially-aware" database. For example, let's say you have a spreadsheet with a latitude and a longitude column. To a normal database, those are just numbers. To PostGIS, they are certain places in the world. Knowing that lets you do things like find all points within a certain radius of a given point, or calculate the distance from these points to other things.
+
+## Why use PostGIS over ArcMap or QGIS?
+
+* Replicable - you can script your workflow, which is great for leaving a trail of your work.
+* It builds on SQL - if you already know SQL, this is an easy way to get into doing GIS analysis.
+* You can query data dynamically - if you have a server that can crunch a PostGIS query and return JSON, you can do dynamic spatial queries in your apps.
 
 ## Installation
 
@@ -344,19 +350,17 @@ We used this at Al Jazeera America for a [story on Syrian refugees](http://proje
 
 * [ST_AsGeoJson()](http://postgis.refractions.net/docs/ST_AsGeoJSON.html) - Convert your `geom` column to GeoJSON. Useful for exporting your data or returning it to the client web browser to plot using Leaflet.js.
 * [ST_MakeLine()](http://postgis.refractions.net/docs/ST_MakeLine.html) - Convert points into a line. We used this at Al Jazeera America to [scrape a ship's location and then dynamically plot that route](http://america.aljazeera.com/multimedia/2013/11/27-days-on-a-cargoshipfromchina.html).
+
+![cargo](http://csvsoundsystem.github.io/nicar-cartodb-postgis/assets/pngs/cargo-map.png)
+
 * [ST_Distance()](http://postgis.refractions.net/docs/ST_MakeLine.html) - Measure the distance. We used this at The Daily Beast to create a [map of distance away from abortion clinics from every point in the country](http://www.thedailybeast.com/articles/2013/01/22/interactive-map-america-s-abortion-clinics.html).
+
+![clinics](http://csvsoundsystem.github.io/nicar-cartodb-postgis/assets/pngs/abortion-distance-map.png)
+
 * [ST_MakeValid()](http://postgis.refractions.net/docs/ST_MakeValid.html) - If you have errors in your shapefiles, this might fix them.
 * [ST_DWithin()](http://postgis.refractions.net/docs/ST_DWithin.html) - Find features that are within a certain specified distance of your feature. E.g. Find all census blocks near a mile of oil wells and add up their populations.
 * [ST_Buffer()](http://postgis.refractions.net/docs/ST_Buffer.html) - Draw a circle around a point. Similar but not as powerful as `ST_DWithin`.
 * [ST_Intersection()](http://postgis.refractions.net/docs/ST_Intersection.html) - Similar to Clip in ArcMap: "Returns a geometry that represents the shared portion of geomA and geomB."
-
-ST_MakeLine example - [plotting a ships location from lat/lng points](http://america.aljazeera.com/multimedia/2013/11/27-days-on-a-cargoshipfromchina.html)
-
-![cargo](http://csvsoundsystem.github.io/nicar-cartodb-postgis/assets/pngs/cargo-map.png)
-
-ST_Distance example - [measuring distance from abortion clinics](http://www.thedailybeast.com/articles/2013/01/22/interactive-map-america-s-abortion-clinics.html)
-
-![clinics](http://csvsoundsystem.github.io/nicar-cartodb-postgis/assets/pngs/abortion-distance-map.png)
 
 
 ### Links, resources

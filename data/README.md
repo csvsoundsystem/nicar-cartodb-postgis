@@ -45,7 +45,7 @@ http://www.nyc.gov/html/dcp/html/bytes/dwn_nynta.shtml
 
 ### counties_ne.zip
 
-Source: http://catalog.data.gov/dataset/tiger-line-shapefile-2013-state-nebraska-current-county-subdivision-state-based
+Source: http://www.census.gov/geo/maps-data/data/tiger-data.html
 
 Download date: 2014-02-25
 
