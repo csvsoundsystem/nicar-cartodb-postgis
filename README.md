@@ -265,7 +265,6 @@ BONUS: To make nice column names from aggregate functions, as can alias them wit
 
 ````
 SELECT ST_AsGeoJSon(the_geom) as geojson, county, yr_est, elev FROM postoffices_ne
-
 ````
 
 ##### Counting
