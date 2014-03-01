@@ -3,6 +3,9 @@
 * [CartoDB tutorial](!introduction-to-cartodb)
 * [PostGIS tutorial](!postgis)
 
+# Short link to this page
+[http://bit.ly/car14postgis](http://bit.ly/car14postgis)
+
 # Overview
 
 This workshop is first and foremost and introduction to PostGIS and the power of geospatial processing with open source tools. To get you there quickly, we are using the CartoDB platform. CartoDB is an open source tool that uses PostGIS to create dynamic interactive maps. CartoDB runs directly in the browser, allowing us to avoid having to install PostGIS during this introduction workshop.
