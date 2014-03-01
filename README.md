@@ -277,7 +277,7 @@ Sometimes you join data based on a shared column id. For example, you have a sha
 
 You can do that in CartoDB with the merge tool, but, data doesn't come preaggregated like this. What if you only had the incident data and wanted to make a choropleth showing aggregate counts per polygon?
 
-Let's make a map of Post Office density by county in Nebraska. It might not look that cool, it's probably just a population map, but the concept you can use over and over.
+Let's make a map of Post Office density by county subdivision in Nebraska. It might not look that cool, it's probably just a population map, but the concept you can use over and over.
 
 Open up `counties_ne` and let's add a column, call it, `postoffices` and set its type to `number`.
 
@@ -295,7 +295,7 @@ UPDATE counties_ne SET postoffices = (
 )
 ````
 
-Let's start with the `SELECT` query first. We're counting the number of Post Offices `WHERE` the geometries from each table overlap. Put differently, For each county, count the number of Post Offices that fall within its borders.
+Let's start with the `SELECT` query first. We're counting the number of Post Offices `WHERE` the geometries from each table overlap. Put differently, For each county subdivision, count the number of Post Offices that fall within its borders.
 
 Next, add our counties row with that number. That's where the `UPDATE` query comes in. Usually, it makes most sense to read SQL queries inside out, like math equations.
 
@@ -382,7 +382,7 @@ We used this at Al Jazeera America for a [story on Syrian refugees](http://proje
 
 ### Normalizing counts by area 
 
-It can be nice to know how many points fall within a polygon, as we did above in the Spatial Joining section. Sometimes you want to normalize your data to see how your counts compare to something like the population or, in this example, the area of the county.
+It can be nice to know how many points fall within a polygon, as we did above in the Spatial Joining section. Sometimes you want to normalize your data to see how your counts compare to something like the population or, in this example, the area of the county subdivision.
 
 ```
 UPDATE counties_ne SET po_density =
