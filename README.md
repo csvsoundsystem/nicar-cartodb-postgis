@@ -305,6 +305,18 @@ PostGIS is also really powerful for measuring distance, which can be a great sto
 
 We can do this same calculation right here. We'll measure the distance from each Post Office to the nearest area that has broadband.
 
+#### Datasets
+
+| File          | Dataset name     | Geom type |
+| ------------- |:----------------:|:---------:|
+| [broadband_ne.zip](http://csvsoundsystem.github.io/nicar-cartodb-postgis/data/broadband_ne.zip) | Nebraska Broadband areas   | polygons |
+
+1. Right click the [broadband_ne.zip link](http://csvsoundsystem.github.io/nicar-cartodb-postgis/data/counties_ne.zip), copy URL to clipboard
+2. Go to your CartoDB dasboard in the table manager
+3. Click ```New table```
+4. Paste the data URL into the form field
+5. Click ```Create table```
+
 You can take a look at `broadband_ne`, which shows areas of Nebraska that have broadband access. We're actually going to be doing the measurement in `postoffices_ne` since that's the data we'll be modifying.
 
 Create a new column in `postoffices_ne` called `dist` and set its type to `number`.
