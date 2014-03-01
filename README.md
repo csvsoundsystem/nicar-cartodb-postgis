@@ -152,11 +152,11 @@ PostGIS is an extension for the open-source database PostgreSQL. It's a "spatial
 
 * Replicable - you can script your workflow, which is great for leaving a trail of your work.
 * It builds on SQL - if you already know SQL, this is an easy way to get into doing GIS analysis.
-* You can query data dynamically - if you have a server that can crunch a PostGIS query and return JSON, you can do dynamic spatial queries in your apps.
+* You can query data dynamically - if you have a server that can crunch a PostGIS query and return JSON, you can do dynamic spatial queries in your apps. e.g. "Find me all points near me."
 
 ## Installation
 
-You can install PostGIS locally on your comptuer by following [these guidelines](https://github.com/csvsoundsystem/nicar-cartodb-postgis/blob/gh-pages/SETUP.md#installing-postgis-locally). Since PostGIS is an extension of PostgreSQL, you install PostgreSQL and then activate the PostGIS plugin.
+You can install PostGIS locally on your computer by following [these guidelines](https://github.com/csvsoundsystem/nicar-cartodb-postgis/blob/gh-pages/SETUP.md#installing-postgis-locally). Since PostGIS is an extension of PostgreSQL, you install PostgreSQL and then activate the PostGIS plugin.
 
 You can also use [CartoDB](http://cartodb.com) -- like we're doing today -- since CartoDB is in part an interface on top of a PostGIS database. Or you can spin up a PostgreSQL database through [Amazon Web Services](http://aws.amazon.com).
 
@@ -193,10 +193,13 @@ SQL can filter using the `WHERE` command.
 ````
 SELECT * FROM postoffices_ne WHERE year < 1900
 
+-- filter by two conditions
 SELECT * FROM postoffices_ne WHERE year > 1900 AND year < 1920 AND daily_customers > 100
 
+-- filter by with an OR
 SELECT * FROM postoffices_ne WHERE year > 1900 OR daily_customers < 100
 
+-- More complex OR and AND
 SELECT * FROM postoffices_ne WHERE (year > 1900 AND year < 1920) OR daily_customers > 100
 ````
 
@@ -262,9 +265,11 @@ SELECT count(*) FROM postoffices_ne WHERE year > 1950
 
 ### Spatial joining with `ST_Intersects()`
 
-Sometimes you join data based on a shared column id. You can do that in CartoDB with the merge tool. But, data doesn't come preaggregated like this. What if we want to make a choropleth from point data?
+Sometimes you join data based on a shared column id. For example, you have a shapefile of police precincts, an Excel file of crime states per precinct and you join them on a shared precinct ID to make a map. 
 
-Let's make a make of Post Office density by county in Nebraska. It might not look that cool, it's probably just a population map, but the concept you can use over and over.
+You can do that in CartoDB with the merge tool, but, data doesn't come preaggregated like this. What if you only had the incident data and wanted to make a choropleth showing aggregate counts per polygon?
+
+Let's make a map of Post Office density by county in Nebraska. It might not look that cool, it's probably just a population map, but the concept you can use over and over.
 
 Open up `counties_ne` and let's add a column, call it, `postoffices` and set its type to `number`.
 
