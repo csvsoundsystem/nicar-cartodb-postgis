@@ -407,7 +407,7 @@ UPDATE counties_ne SET po_density =
           postoffices_ne 
         WHERE 
           ST_Intersects(counties_ne.the_geom, the_geom)
-      ) / population
+      ) / pop_est
 
 ````
 
