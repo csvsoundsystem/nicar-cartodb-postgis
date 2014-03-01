@@ -329,8 +329,8 @@ Create a new column in `postoffices_ne` called `dist` and set its type to `numbe
 ````
 UPDATE postoffices_ne SET dist = (
   SELECT ST_Distance(
-            postoffices_ne.the_geom, 
-            broadband_ne.the_geom
+            postoffices_ne.the_geom::geography, 
+            broadband_ne.the_geom::geography
           )
           FROM broadband_ne 
           ORDER BY postoffices_ne.the_geom <-> broadband_ne.the_geom 
@@ -346,13 +346,15 @@ Now, you can see in the `SELECT` part, we're then measuring the distance between
 
 Now, do the same `UPDATE` query and add it as our `dist` column, for every post office.
 
+We're also setting the data type of our geometry column to `geography` by using `::geography`. This ensures that the units of our distance calculation are in meters.
+
 Or more generically:
 
 ````
 UPDATE name_of_point_table SET new_column_name = (
   SELECT ST_Distance(
-            name_of_point_table.the_geom, 
-            name_of_polygon_table.the_geom
+            name_of_point_table.the_geom::geography, 
+            name_of_polygon_table.the_geom::geography
           )
           FROM broadband_ne 
           ORDER BY name_of_point_table.the_geom <-> name_of_polygon_table.the_geom 
@@ -365,23 +367,9 @@ We used this at Al Jazeera America for a [story on Syrian refugees](http://proje
 
 ![syrian_refugees](http://csvsoundsystem.github.io/nicar-cartodb-postgis/assets/pngs/syria-map.png)
 
-### Counting by area
+### Normalizing counts by area 
 
-It can be nice to know how many points fall within a polygon. In this case, how many post offices are in each county? To do that, create a new column in ```counties_ne``` called ```po_density```. Now run,
-
-```
-UPDATE counties_ne SET po_density =
-      (
-        SELECT 
-          count(*) 
-        FROM 
-          postoffices_ne 
-        WHERE 
-          ST_Intersects(counties_ne.the_geom, the_geom)
-      )
-```
-
-This runs a subquery that counts all the post offices within each county polygon. It is also possible to normalize it by the area of each county,
+It can be nice to know how many points fall within a polygon, as we did above in the Spatial Joining section. Sometimes you want to normalize your data to see how your counts compare to something like the population or, in this example, the area of the county.
 
 ```
 UPDATE counties_ne SET po_density =
