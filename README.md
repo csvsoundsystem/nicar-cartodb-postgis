@@ -382,7 +382,7 @@ We used this at Al Jazeera America for a [story on Syrian refugees](http://proje
 
 ### Normalizing counts by area 
 
-It can be nice to know how many points fall within a polygon, as we did above in the Spatial Joining section. Sometimes you want to normalize your data to see how your counts compare to something like the population or, in this example, the area of the county subdivision.
+It can be nice to know how many points fall within a polygon, as we did above in the Spatial Joining section. Sometimes you want to normalize your data to see how your counts compare to something like the population or, in this example, the area of the county subdivision. You can see this is the same as our spatial join query except we're dividing by the value we want to normalize over.
 
 ```
 UPDATE counties_ne SET po_density =
@@ -395,6 +395,36 @@ UPDATE counties_ne SET po_density =
           ST_Intersects(counties_ne.the_geom, the_geom)
       ) / ST_Area(the_geom::geography)
 ```
+
+You could also normalize by population
+
+````
+UPDATE counties_ne SET po_density =
+      (
+        SELECT 
+          count(*) 
+        FROM 
+          postoffices_ne 
+        WHERE 
+          ST_Intersects(counties_ne.the_geom, the_geom)
+      ) / population
+
+````
+
+More generically:
+
+````
+UPDATE name_of_polygon_data SET new_column_name =
+      (
+        SELECT 
+          count(*) 
+        FROM 
+          name_of_point_data 
+        WHERE 
+          ST_Intersects(name_of_polygon_data.the_geom, the_geom)
+      ) / name_of_column_to_normalize_over_or_a_postgis_function
+
+````
 
 ### Other fun functions
 
