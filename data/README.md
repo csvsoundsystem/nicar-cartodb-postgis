@@ -49,7 +49,7 @@ Source: http://www.census.gov/geo/maps-data/data/tiger-data.html
 
 Download date: 2014-02-25
 
-Notes: Counties in Nebraska
+Notes: Counties in Nebraska prejoined with census data
 
 ### broadband_ne.zip
 
@@ -58,11 +58,3 @@ Source: http://www.broadbandmap.gov/data-download
 Download date: 2014-02-25
 
 Notes: Broadband availability in Nebraska, topographically simplified to 10%.
-
-### postoffices_ne.zip
-
-Source: http://nrhp.focus.nps.gov/natreg/docs/Download.html
-
-Download date: 2014-02-25
-
-Notes: Extracted from National Register of Historic Places Midwest KMZ file http://nrhp.focus.nps.gov/natreg/docs/NRHP_Midwest_Region.kmz. Historic post offices in Nebraska. `year` and `daily_customers` columns are dummy data.
