@@ -307,6 +307,8 @@ We can do this same calculation right here. We'll measure the distance from each
 
 #### Datasets
 
+Import `broadband_ne`, which shows areas of Nebraska that have broadband access. We're actually going to be doing the measurement in `postoffices_ne` since that's the data we'll be modifying.
+
 | File          | Dataset name     | Geom type |
 | ------------- |:----------------:|:---------:|
 | [broadband_ne.zip](http://csvsoundsystem.github.io/nicar-cartodb-postgis/data/broadband_ne.zip) | Nebraska Broadband areas   | polygons |
@@ -317,7 +319,6 @@ We can do this same calculation right here. We'll measure the distance from each
 4. Paste the data URL into the form field
 5. Click ```Create table```
 
-You can take a look at `broadband_ne`, which shows areas of Nebraska that have broadband access. We're actually going to be doing the measurement in `postoffices_ne` since that's the data we'll be modifying.
 
 Create a new column in `postoffices_ne` called `dist` and set its type to `number`.
 
