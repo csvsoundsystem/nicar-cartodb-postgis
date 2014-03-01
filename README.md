@@ -261,6 +261,13 @@ And we can convert that geometry into different formats
 SELECT ST_AsGeoJSon(the_geom), county, yr_est, elev FROM postoffices_ne
 ````
 
+BONUS: To make nice column names from aggregate functions, as can alias them with `AS`.
+
+````
+SELECT ST_AsGeoJSon(the_geom) as geojson, county, yr_est, elev FROM postoffices_ne
+
+````
+
 ##### Counting
 
 Let's say you want to know some aggregate information, like how many rows you have
