@@ -49,7 +49,7 @@ Source: http://www.census.gov/geo/maps-data/data/tiger-data.html
 
 Download date: 2014-02-25
 
-Notes: Counties in Nebraska
+Notes: Counties in Nebraska prejoined with census data
 
 ### broadband_ne.zip
 

@@ -295,7 +295,7 @@ UPDATE counties_ne SET postoffices = (
 )
 ````
 
-Let's start with the `SELECT` query first. We're counting the number of Post Offices `WHERE` the geometries from each table overlap. Put differently, For each county, count the number of Post Offices that fall within its borders.
+Let's start with the `SELECT` query first. We're counting the number of Post Offices `WHERE` the geometries from each table overlap. Put differently, For each county subdivision, count the number of Post Offices that fall within its borders.
 
 Next, add our counties row with that number. That's where the `UPDATE` query comes in. Usually, it makes most sense to read SQL queries inside out, like math equations.
 
@@ -382,7 +382,7 @@ We used this at Al Jazeera America for a [story on Syrian refugees](http://proje
 
 ### Normalizing counts by area 
 
-It can be nice to know how many points fall within a polygon, as we did above in the Spatial Joining section. Sometimes you want to normalize your data to see how your counts compare to something like the population or, in this example, the area of the county. You can see this is the same as our spatial join query except we're dividing by the value we want to normalize over.
+It can be nice to know how many points fall within a polygon, as we did above in the Spatial Joining section. Sometimes you want to normalize your data to see how your counts compare to something like the population or, in this example, the area of the county subdivision. You can see this is the same as our spatial join query except we're dividing by the value we want to normalize over.
 
 ```
 UPDATE counties_ne SET po_density =
