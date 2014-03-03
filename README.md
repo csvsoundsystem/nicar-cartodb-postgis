@@ -1,7 +1,7 @@
 # Table of contents
-* [Overview](!overview)
-* [CartoDB tutorial](!introduction-to-cartodb)
-* [PostGIS tutorial](!postgis)
+* [Overview](#overview)
+* [CartoDB tutorial](#introduction-to-cartodb)
+* [PostGIS tutorial](#postgis)
 
 # Short link to this page
 [http://bit.ly/car14postgis](http://bit.ly/car14postgis)
