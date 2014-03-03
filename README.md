@@ -457,6 +457,6 @@ UPDATE name_of_polygon_data SET new_column_name =
 
 * [PostPostGIS](http://twitter.com/PostPostGIS) - A Twitter account that discusses geospatial analysis and critical theory.
 
-* Luis Bosque at Vizzuality put together this chart showing how the overall CartoDB database structure works
+* [Luis Bosque](http://twitter.com/luisico) at Vizzuality put together this chart showing how the overall CartoDB database structure works
 
 ![cartodb_flowchart](http://csvsoundsystem.github.io/nicar-cartodb-postgis/assets/pngs/CartoDB-flow.png)
