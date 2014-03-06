@@ -447,6 +447,7 @@ UPDATE name_of_polygon_data SET new_column_name =
 * [ST_DWithin()](http://postgis.refractions.net/docs/ST_DWithin.html) - Find features that are within a certain specified distance of your feature. E.g. Find all census blocks near a mile of oil wells and add up their populations.
 * [ST_Buffer()](http://postgis.refractions.net/docs/ST_Buffer.html) - Draw a circle around a point. Similar but not as powerful as `ST_DWithin`.
 * [ST_Intersection()](http://postgis.refractions.net/docs/ST_Intersection.html) - Similar to Clip in ArcMap: "Returns a geometry that represents the shared portion of geomA and geomB."
+* [ST_Centroid())](http://postgis.refractions.net/docs/ST_Centroid.html) - Get the center point of a polygon. Word of caution: it might not fall within that polygon. For that, try [ST_PointOnSurface()](http://postgis.refractions.net/docs/ST_PointOnSurface.html).
 
 
 ### Links, resources
