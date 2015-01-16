@@ -452,6 +452,8 @@ UPDATE name_of_polygon_data SET new_column_name =
 
 ### Links, resources
 
+* [More about joining data](https://github.com/Vizzuality/CartoDB-Tutorials/tree/master/joining-data) - With spatial joins and normal SQL joins.
+* 
 * [PostGIS Documentation](http://postgis.net/docs/manual-dev/reference.html) - Read through the functions to see what it's capable of.
 
 * [PostGIS Homepage](http://postgis.net/)
