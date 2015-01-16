@@ -190,7 +190,7 @@ Click on the `SQL` tab we can start doing some basic querying.
 
 SQL can filter using the `WHERE` command.
 
-````
+````sql
 SELECT * FROM postoffices_ne WHERE yr_est < 1860
 
 SELECT * FROM postoffices_ne WHERE elev < 400
@@ -209,7 +209,7 @@ SELECT * FROM postoffices_ne WHERE (yr_est > 1870 AND yr_est < 1899) OR elev > 1
 
 Order by yr_est made
 
-````
+````sql
 SELECT * FROM postoffices_ne ORDER BY yr_est
 
 SELECT * FROM postoffices_ne ORDER BY yr_est DESC
@@ -223,19 +223,19 @@ Instead of showing every row, you can limit your query. This can be useful to ma
 
 Grab the first five
 
-````
+````sql
 SELECT * FROM postoffices_ne LIMIT 5
 ````
 
 This data isn't in any order though, so that query isn't very helpful. This will grab the five oldest.
 
-````
+````sql
 SELECT * FROM postoffices_ne ORDER BY yr_est LIMIT 5
 ````
 
 Or you can grab the five highest
 
-````
+````sql
 SELECT * FROM postoffices_ne ORDER BY elev DESC LIMIT 5
 ````
 
@@ -245,25 +245,25 @@ SELECT * FROM postoffices_ne ORDER BY elev DESC LIMIT 5
 
 We've been doing `SELECT` statements to create a view on our database. You might have noticed the `*`, which means "Get all columns". You can also only retrieve specific columns by name.
 
-````
+````sql
 SELECT county, yr_est, elev FROM postoffices_ne LIMIT 10
 ````
 
 Because this is a spatially-aware database, we also have a column that holds our lat/lng. PostGIS usually refers to this column as `geom` or `the_geom` in CartoDB.
 
-````
+````sql
 SELECT county, yr_est, elev, the_geom FROM postoffices_ne LIMIT 10
 ````
 
 And we can convert that geometry into different formats
 
-````
+````sql
 SELECT ST_AsGeoJSon(the_geom), county, yr_est, elev FROM postoffices_ne
 ````
 
 BONUS: To make nice column names from aggregate functions, as can alias them with `AS`.
 
-````
+````sql
 SELECT ST_AsGeoJSon(the_geom) as geojson, county, yr_est, elev FROM postoffices_ne
 ````
 
@@ -271,7 +271,7 @@ SELECT ST_AsGeoJSon(the_geom) as geojson, county, yr_est, elev FROM postoffices_
 
 Let's say you want to know some aggregate information, like how many rows you have
 
-````
+````sql
 SELECT count(*) FROM postoffices_ne
 
 SELECT count(*) FROM postoffices_ne WHERE yr_est > 1880
@@ -289,7 +289,7 @@ Open up `counties_ne` and let's add a column, call it, `postoffices` and set its
 
 Now, run this query:
 
-````
+````sql
 UPDATE counties_ne SET postoffices = (
   SELECT count(*) 
   FROM postoffices_ne 
@@ -307,7 +307,7 @@ Next, add our counties row with that number. That's where the `UPDATE` query com
 
 More generically:
 
-````
+````sql
 UPDATE name_of_polygon_table SET new_column_name = (
   SELECT count(*) 
   FROM name_of_point_table 
@@ -345,7 +345,7 @@ Import `broadband_ne`, which shows areas of Nebraska that have broadband access.
 
 Create a new column in `postoffices_ne` called `dist` and set its type to `number`.
 
-````
+````sql
 UPDATE postoffices_ne SET dist = (
   SELECT ST_Distance(
             postoffices_ne.the_geom::geography, 
@@ -369,7 +369,7 @@ We're also setting the data type of our geometry column to `geography` by using 
 
 Or more generically:
 
-````
+````sql
 UPDATE name_of_point_table SET new_column_name = (
   SELECT ST_Distance(
             name_of_point_table.the_geom::geography, 
@@ -390,7 +390,7 @@ We used this at Al Jazeera America for a [story on Syrian refugees](http://proje
 
 It can be nice to know how many points fall within a polygon, as we did above in the Spatial Joining section. Sometimes you want to normalize your data to see how your counts compare to something like the population or, in this example, the area of the county subdivision. You can see this is the same as our spatial join query except we're dividing by the value we want to normalize over.
 
-```
+```sql
 UPDATE counties_ne SET po_density =
       (
         SELECT 
@@ -404,7 +404,7 @@ UPDATE counties_ne SET po_density =
 
 You could also normalize by population
 
-````
+````sql
 UPDATE counties_ne SET po_density =
       (
         SELECT 
@@ -419,7 +419,7 @@ UPDATE counties_ne SET po_density =
 
 More generically:
 
-````
+````sql
 UPDATE name_of_polygon_data SET new_column_name =
       (
         SELECT 
