@@ -16,7 +16,7 @@ It's a good idea to only use one of these methods, since mixing and matching can
 
 Once you have PostgreSQL installed, you access it by running `psql` in your terminal. You sometimes need to manually activate the PostGIS extension. PostGIS.net has some good instructions for how to do this for PostGIS (just one line) as well as for other handy spatial extensions:
 
-````
+```sql
 -- Enable PostGIS (includes raster)
 CREATE EXTENSION postgis;
 
@@ -28,4 +28,4 @@ CREATE EXTENSION fuzzystrmatch;
 
 -- Enable US Tiger Geocoder
 CREATE EXTENSION postgis_tiger_geocoder;
-````
+```

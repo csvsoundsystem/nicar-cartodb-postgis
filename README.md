@@ -27,7 +27,7 @@ By the end of this workshop you will also have created a map with both Leaflet a
 
 [CartoDB](http://cartodb.com) is an open source tool hosted as an online service. Anyone can create a free account and for those more adventurous, the source is available on [GitHub](http://github.com/CartoDB/CartoDB).
 
-![cartodb_intro](http://csvsoundsystem.github.io/nicar-cartodb-postgis/assets/gifs/cartodb_intro.gif)
+![cartodb_intro](https://raw.githubusercontent.com/csvsoundsystem/nicar-cartodb-postgis/gh-pages/assets/gifs/cartodb_intro.gif)
 
 #### Tutorials
 
@@ -76,8 +76,8 @@ Importing data into CartoDB is easy! All you need is a file in a supported forma
 
 | File          | Dataset name     | Geom type |
 | ------------- |:----------------:|:---------:|
-| [counties_ne.zip](http://csvsoundsystem.github.io/nicar-cartodb-postgis/data/counties_ne.zip) | Nebraska Counties   | polygons |
-| [postoffices_ne.zip](http://csvsoundsystem.github.io/nicar-cartodb-postgis/data/postoffices_ne.zip) | US Post Offices | points |
+| [counties_ne.zip](https://raw.githubusercontent.com/csvsoundsystem/nicar-cartodb-postgis/gh-pages/data/counties_ne.zip) | Nebraska Counties   | polygons |
+| [postoffices_ne.zip](https://raw.githubusercontent.com/csvsoundsystem/nicar-cartodb-postgis/gh-pages/data/postoffices_ne.zip) | US Post Offices | points |
 
 ##### Four ways to get data into CartoDB
 
@@ -86,13 +86,13 @@ Importing data into CartoDB is easy! All you need is a file in a supported forma
 3. Add new data to a row in your tables or by drawing on the map
 4. Use authenticated [SQL API](http://developers.cartodb.com/documentation/sql-api.html) calls to write data
 
-![import](http://csvsoundsystem.github.io/nicar-cartodb-postgis/assets/gifs/import.gif)
+![import](https://raw.githubusercontent.com/csvsoundsystem/nicar-cartodb-postgis/gh-pages/assets/gifs/import.gif)
 
 #### First data import
 
 Let's start by importing the dataset of Nebraska Counties.
 
-1. Right click the [counties_ne.zip link](http://csvsoundsystem.github.io/nicar-cartodb-postgis/data/counties_ne.zip), copy URL to clipboard
+1. Right click the [counties_ne.zip link](https://raw.githubusercontent.com/csvsoundsystem/nicar-cartodb-postgis/gh-pages/data/counties_ne.zip), copy URL to clipboard
 2. Go to your CartoDB dasboard in the table manager
 3. Click ```New table```
 4. Paste the data URL into the form field
@@ -104,7 +104,7 @@ Let's start by importing the dataset of Nebraska Counties.
 
 ##### Choropleths, Category maps, Bubble maps
 
-![styling](http://csvsoundsystem.github.io/nicar-cartodb-postgis/assets/gifs/styling.gif)
+![styling](https://raw.githubusercontent.com/csvsoundsystem/nicar-cartodb-postgis/gh-pages/assets/gifs/styling.gif)
 
 There are many styles possible in CartoDB. The tool includes a simple style wizard for you to apply and customize just some of these. When you grow out of the wizard, you'll want to dig into the CSS editor to really customize your maps.
 
@@ -112,13 +112,13 @@ There are many styles possible in CartoDB. The tool includes a simple style wiza
 
 You can add infowindows and legends to any maps you create. There are some nice simple tools for you to create and customize. As you learn more though, you can also take advantage of full HTML templating to make them look and behave exactly as you want.
 
-![infowindows and legends](http://csvsoundsystem.github.io/nicar-cartodb-postgis/assets/gifs/legends.gif)
+![infowindows and legends](https://raw.githubusercontent.com/csvsoundsystem/nicar-cartodb-postgis/gh-pages/assets/gifs/legends.gif)
 
 ### Visualizations
 
 Let's start by importing the second dataset of Nebraska Post Offices. Go back to your table manager, then
 
-1. Right click the [postoffices_ne.zip link](http://csvsoundsystem.github.io/nicar-cartodb-postgis/data/postoffices_ne.zip), copy URL to clipboard
+1. Right click the [postoffices_ne.zip link](https://raw.githubusercontent.com/csvsoundsystem/nicar-cartodb-postgis/gh-pages/data/postoffices_ne.zip), copy URL to clipboard
 2. Go to your CartoDB dasboard in the table manager
 3. Click ```New table```
 4. Paste the data URL into the form field
@@ -130,7 +130,7 @@ Now that we have our Post Office dataset, let's create a visualization. You do t
 
 Visualizations allow you to mix multiple datasets into a layered map. You can add a new layer by clicking the plus sign directly above the right-hand menu.
 
-![infowindows and legends](http://csvsoundsystem.github.io/nicar-cartodb-postgis/assets/gifs/layers.gif)
+![infowindows and legends](https://raw.githubusercontent.com/csvsoundsystem/nicar-cartodb-postgis/gh-pages/assets/gifs/layers.gif)
 
 You can reorder the layers on the map by dragging layers up through the stack. Each layer can be styled and edited independantly. You can also add interactivity and legends for the layers. 
 
@@ -138,7 +138,7 @@ You can reorder the layers on the map by dragging layers up through the stack. E
 
 Right away you can get a public link for your visualization. Where the button ```VISUALIZE``` used to be, it should new say ```PUBLISH```. From there you can get the menu for publishing maps.
 
-![infowindows and legends](http://csvsoundsystem.github.io/nicar-cartodb-postgis/assets/gifs/visualize.gif)
+![infowindows and legends](https://raw.githubusercontent.com/csvsoundsystem/nicar-cartodb-postgis/gh-pages/assets/gifs/visualize.gif)
 
 ##### Links, embeds, CartoDB.js
 
@@ -334,9 +334,9 @@ Import `broadband_ne`, which shows areas of Nebraska that have broadband access.
 
 | File          | Dataset name     | Geom type |
 | ------------- |:----------------:|:---------:|
-| [broadband_ne.zip](http://csvsoundsystem.github.io/nicar-cartodb-postgis/data/broadband_ne.zip) | Nebraska Broadband areas   | polygons |
+| [broadband_ne.zip](https://raw.githubusercontent.com/csvsoundsystem/nicar-cartodb-postgis/gh-pages/data/broadband_ne.zip) | Nebraska Broadband areas   | polygons |
 
-1. Right click the [broadband_ne.zip link](http://csvsoundsystem.github.io/nicar-cartodb-postgis/data/broadband_ne.zip), copy URL to clipboard
+1. Right click the [broadband_ne.zip link](https://raw.githubusercontent.com/csvsoundsystem/nicar-cartodb-postgis/gh-pages/data/broadband_ne.zip), copy URL to clipboard
 2. Go to your CartoDB dasboard in the table manager
 3. Click ```New table```
 4. Paste the data URL into the form field
@@ -384,7 +384,7 @@ Note: If you aren't using CartoDB, replace `the_geom` with `geom`.
 
 We used this at Al Jazeera America for a [story on Syrian refugees](http://projects.aljazeera.com/2013/syrias-refugees/index.html) showing how much space that many people take up in the US to give context to an international story.
 
-![syrian_refugees](http://csvsoundsystem.github.io/nicar-cartodb-postgis/assets/pngs/syria-map.png)
+![syrian_refugees](https://raw.githubusercontent.com/csvsoundsystem/nicar-cartodb-postgis/gh-pages/assets/pngs/syria-map.png)
 
 ### Normalizing counts by area 
 
@@ -437,11 +437,11 @@ UPDATE name_of_polygon_data SET new_column_name =
 * [ST_AsGeoJson()](http://postgis.refractions.net/docs/ST_AsGeoJSON.html) - Convert your `geom` column to GeoJSON. Useful for exporting your data or returning it to the client web browser to plot using Leaflet.js.
 * [ST_MakeLine()](http://postgis.refractions.net/docs/ST_MakeLine.html) - Convert points into a line. We used this at Al Jazeera America to [scrape a ship's location and then dynamically plot that route](http://america.aljazeera.com/multimedia/2013/11/27-days-on-a-cargoshipfromchina.html).
 
-![cargo](http://csvsoundsystem.github.io/nicar-cartodb-postgis/assets/pngs/cargo-map.png)
+![cargo](https://raw.githubusercontent.com/csvsoundsystem/nicar-cartodb-postgis/gh-pages/assets/pngs/cargo-map.png)
 
 * [ST_Distance()](http://postgis.refractions.net/docs/ST_MakeLine.html) - Measure the distance. We used this at The Daily Beast to create a [map of distance away from abortion clinics from every point in the country](http://www.thedailybeast.com/articles/2013/01/22/interactive-map-america-s-abortion-clinics.html).
 
-![clinics](http://csvsoundsystem.github.io/nicar-cartodb-postgis/assets/pngs/abortion-distance-map.png)
+![clinics](https://raw.githubusercontent.com/csvsoundsystem/nicar-cartodb-postgis/gh-pages/assets/pngs/abortion-distance-map.png)
 
 * [ST_MakeValid()](http://postgis.refractions.net/docs/ST_MakeValid.html) - If you have errors in your shapefiles, this might fix them.
 * [ST_DWithin()](http://postgis.refractions.net/docs/ST_DWithin.html) - Find features that are within a certain specified distance of your feature. E.g. Find all census blocks near a mile of oil wells and add up their populations.
@@ -462,4 +462,4 @@ UPDATE name_of_polygon_data SET new_column_name =
 
 * [Luis Bosque](http://twitter.com/luisico) at Vizzuality put together this chart showing how the overall CartoDB PostgreSQL/tiler/SQL API/cacheing structure works.
 
-![cartodb_flowchart](http://csvsoundsystem.github.io/nicar-cartodb-postgis/assets/pngs/CartoDB-flow.png)
+![cartodb_flowchart](https://raw.githubusercontent.com/csvsoundsystem/nicar-cartodb-postgis/gh-pages/assets/pngs/CartoDB-flow.png)
