@@ -357,7 +357,7 @@ UPDATE postoffices_ne SET dist = (
 )
 ````
 
-So, starting from the outside in, we're ordering our table with this crazy `<->` operator, which finds the lat/lng of a Post Office point and sorts the table in ascending order of distance to that point. In other words, take a given post office, and sort the areas in the broadband table in order of increasing distance away from that point -- do that for every post office point.
+So, starting from the inside going out, we're ordering our table with this crazy `<->` operator, which finds the lat/lng of a Post Office point and sorts the table in ascending order of distance to that point. In other words, take a given post office, and sort the areas in the broadband table in order of increasing distance away from that point -- do that for every post office point.
 
 You can read more about what the `<->` does with [the indexed-nearest neighbor search](http://boundlessgeo.com/2011/09/indexed-nearest-neighbour-search-in-postgis/).
 
